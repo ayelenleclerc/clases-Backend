@@ -23,8 +23,17 @@ mostrarLista(lista2);
   }
 })([2, 22, 222]);
 
-function crearMultipicador(numero) {
+function crearMultiplicador(numero) {
   return function (numero2) {
     return numero * numero2;
   };
 }
+
+const duplicar = (numero) => {
+  return crearMultiplicador(numero)(2);
+};
+const triplicar = (numero) => {
+  return crearMultiplicador(numero)(3);
+};
+console.log(duplicar(5));
+console.log(triplicar(5));
