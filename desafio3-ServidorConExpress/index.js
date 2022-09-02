@@ -111,7 +111,10 @@ app.get("/productorandom", async (req, res) => {
 
 // PAGE NOT FOUND
 app.get("/*", (req, res) => {
-  res.send('<h1 style="color: red">PAGE NOT FOUND</h1>');
+  const statusApp = 404;
+  res.send(
+    `<h1 style="color: red">Página no encontrada Status: ${statusApp}</h1>`
+  );
 });
 
 const server = app.listen(PORT, () => {
