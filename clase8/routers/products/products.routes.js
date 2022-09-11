@@ -1,11 +1,12 @@
 const express = require("express");
 const { products } = require("../../data/data");
+const loggerMiddleware = require("../../middlewares/logger");
 const router = express.Router();
 
 //Middlewares
 
 //Routes
-router.get("/", (req, res) => {
+router.get("/", loggerMiddleware, (req, res) => {
   const { maxPrice, search } = req.query;
   let productsResponse = [...products];
   if (Object.keys(req.query).length > 0) {
