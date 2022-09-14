@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 8</title>
+</head>
+
+<body>
+    <div class="container">
+        <h3 class="title">Agregar Persona</h3>
+        <div class="form-container">
+            <form action="/personas" method="POST">
+
+                <label for="p-nombre">Nombre</label>
+                <input type="text" name="nombre" id="p-nombre" placeholder="Ingrese en nombre " required>
+
+                <label for="p-apellido">Apellido</label>
+                <input type="text" name="apellido" id="p-apellido" placeholder="Ingrese el apellido " required>
+
+                <label for="p-edad">Edad</label>
+                <input type="text" name="edad" id="p-edad" placeholder="Ingrese la edad" required>
+                <input type="submit" name="submit" id="submit" value="Agregar Persona">
+            </form>
+        </div>
+        <h3 class="title">Agregar Mascota</h3>
+        <div class="form-container">
+            <form action="/mascotas" method="POST">
+
+                <label for="m-nombre">Nombre</label>
+                <input type="text" name="nombre" id="m-nombre" placeholder="Ingrese en nombre" required>
+
+                <label for="m-raza">Raza</label>
+                <input type="text" name="raza" id="m-raza" placeholder="Ingrese la raza" required>
+
+                <label for="m-edad">Edad</label>
+                <input type="text" name="edad" id="m-edad" placeholder="Ingrese la edad" required>
+                <input type="submit" name="submit" id="submit" value="Agregar Mascota">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
