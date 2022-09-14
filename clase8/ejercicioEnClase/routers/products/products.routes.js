@@ -51,7 +51,7 @@ router.post("/", (req, res) => {
     id: products.length + 1,
     name,
     description,
-    price,
+    price: +price,
     image,
   };
   products.push(newProduct);
