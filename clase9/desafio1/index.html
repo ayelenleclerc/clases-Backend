@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handlebars</title>
+</head>
+
+<body>
+    <div id="root">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script>
+        // compile the template
+        const hbTemplate = Handlebars.compile(`
+            <h1>Datos personales</h1>
+        <ul>
+            <li>Nombre: {{name}}</li>
+            <li>Apellido: {{lastname}}</li>
+            <li>Edad: {{age}}</li>
+            <li>Email: {{email}}</li>
+            <li>Teléfono: {{phone}}</li>
+            </ul>
+        `);
+        // execute the compiled template and print the output to the console
+        const html = hbTemplate({ name: "Ayelen", lastname: "Leclerc", age: 40, email: "ayelenleclerc@gmail.com", phone: 1133749360 });
+        document.querySelector("#root").innerHTML = html;
+    </script>
+</body>
+
+</html>
