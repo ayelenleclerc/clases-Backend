@@ -1,0 +1,18 @@
+{
+  "name": "coder_pb_10",
+  "version": "1.0.0",
+  "description": "Don't forget to install dependencies with:  ``` npm i ``` To run the project with node ``` npm start ``` To run the project with nodemon (you must have nodemon installed globally on your device) ``` npm run start-dev ```",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start-dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "nodemon": "^2.0.19",
+    "pug": "^3.0.2"
+  }
+}
