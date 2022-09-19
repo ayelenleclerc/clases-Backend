@@ -2,7 +2,7 @@ const express = require("express");
 const route = express("routers");
 const API = require("../../api/api");
 
-const products = new API("../../api/productos.json");
+const products = new API("./productos.json");
 
 route.get("/", async (req, res) => {
   try {
