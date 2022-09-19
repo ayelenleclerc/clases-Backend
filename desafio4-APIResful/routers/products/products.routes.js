@@ -1,8 +1,9 @@
 const express = require("express");
+const path = require("path");
 const route = express("routers");
 const API = require("../../api/api");
 
-const products = new API("./productos.json");
+const products = new API("./routers/products/products.json");
 
 route.get("/", async (req, res) => {
   try {
