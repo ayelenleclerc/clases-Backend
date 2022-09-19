@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-class Contenedor {
+class API {
   constructor(name) {
     this.name = name;
   }
@@ -50,6 +50,27 @@ class Contenedor {
     }
   }
 
+  async changeById(id, infoActualizada) {
+    try {
+      let contenido = await fs.promises.readFile(`${this.name}`, "utf-8");
+      let contenidoParseado = JSON.parse(contenido);
+      contenidoParseado.forEach((element) => {
+        if (element.id === id) {
+          (element.id = id),
+            (element.title = infoActualizada.title),
+            (element.price = infoActualizada.price),
+            (element.thumbnail = infoActualizada.thumbnail);
+        }
+      });
+
+      await fs.promises.writeFile(
+        `./${this.name}`,
+        JSON.stringify(contenidoParseado)
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
   async deleteById(id) {
     try {
       let contenido = await fs.promises.readFile(`./${this.name}`, "utf-8");
@@ -78,17 +99,4 @@ class Contenedor {
     }
   }
 }
-
-let contenedor = new Contenedor("productos.json");
-
-let informacionNueva = {
-  id: "1",
-  name: "Gorra Blanca",
-  price: 1000.0,
-};
-
-//contenedor.save(informacionNueva).then((res) => console.log(res));
-// contenedor.getById(2).then((res) => console.log(res));
-//contenedor.getAll().then((res) => console.log(res));
-//contenedor.deleteById(4).then((res) => console.log(res));
-//contenedor.deleteAll().then((res) => console.log(res));
+module.exports = API;

@@ -17,6 +17,7 @@
     <div class="nav-center">
       <!-- nav header -->
       <div class="nav-header">
+        <img src="./logo.svg" class="logo" alt="logo" />
         <button class="nav-toggle">
           <i class="fas fa-bars"></i>
         </button>
@@ -78,6 +79,7 @@
           <br>
           <input type="text" name="title" id="title" style="margin-bottom: 16px;" class="input-file">
         </div>
+
         <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
           <label for="price"> Precio: </label>
           <br>
@@ -92,7 +94,25 @@
             value="Crear producto" class="submit-button"></div>
       </div>
     </form>
-
+  </div>
+  <div>
+    <h3 style="text-align: center; margin-top: 16px;"> Sube tus archivos! </h3>
+  </div>
+  <!-- Single File -->
+  <div class="single-file-form">
+    <form action="/api/file" enctype="multipart/form-data" method="POST">
+      <input type="file" id="file" name="file" class="input-file"><span onclick="clearFile('single')"
+        class="clear-button">X</span>
+      <div><input type="submit" value="Upload File" class="submit-button"></div>
+    </form>
+  </div>
+  <!-- Multiple Files -->
+  <div class="multiple-files-form">
+    <form action="/api/files" enctype="multipart/form-data" method="POST">
+      <input type="file" id="files" name="files" multiple class="input-file"><span onclick="clearFile('multiple')"
+        class="clear-button">X</span>
+      <div><input type="submit" value="Upload Files" class="submit-button"></div>
+    </form>
   </div>
   <!-- javascript -->
   <script src="./browser-app.js"></script>
