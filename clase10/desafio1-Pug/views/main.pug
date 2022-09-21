@@ -1,0 +1,11 @@
+extends ./layout 
+
+block main
+    - const estilo= "width:50%; height:100px;";
+    h1(style="text-align:center; color:blue;")!= titulo
+    div(style="width:70%; margin:0 auto; text-align:center;")
+        span=min 
+        meter(value=nivel min=min max=max style=estilo)
+        span=max 
+        
+

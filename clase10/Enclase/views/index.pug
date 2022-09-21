@@ -1,0 +1,47 @@
+//- - const saludo="Hola como estan? con guion se puede escribir js"
+//- -
+//-     const arreglo = [
+//-         1, 2, 3, 4, 5
+//-     ]
+//-     const mensaje= "Colocando un guion, salto de linea y tab, se puede escribir codigo js multilinea"
+//- doctype html
+//- html(lang="en")
+//-     head
+//-         meta(charset="UTF-8")
+//-         meta(http-equiv="X-UA-Compatible", content="IE=edge")
+//-         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+//-         title Mi pagina con PUG
+//-     body 
+//-         h1(style="color:green;") Hola a todos desde PUG
+//-         h3= "Otra linea"
+//-         p= "<b>otra forma</b> sin formato html"
+//-         p!="<b>otra forma</b> se ve el formato html"
+//-         p= saludo 
+//-         ul 
+//-             each item in arreglo 
+//-                 li= `Item ${item}`
+
+//-         h1 Aca se muestra desde el server:
+        
+//-         p= saludoServer  
+        
+//-         //- ul 
+//-         //-     each itemS in arregloServer 
+//-         //-         li= `Item ${itemS}`
+
+//-         h1 Aca se muestra condicionales 
+        
+//-         if showList 
+//-             ul 
+//-             each itemS in arregloServer 
+//-                 li= `Item ${itemS}`
+
+
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Plantilla friends
+    body 
+        block main
