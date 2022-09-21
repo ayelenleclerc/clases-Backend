@@ -1,27 +1,31 @@
 const path = require("path");
-const rutasApi = require("./hecho en clase/routers/index");
+const rutasApi = require("");
 const express = require("express");
+const { Products } = require("./models");
+const { urlencoded } = require("express");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+const products = new Products();
 
 app.set("views", "./views");
-app.set("view engine", "pug");
+app.set("view engine", "ejs");
 
 // Middlewares
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.resolve(__dirname, "./public")));
 
 // Rutas
 app.use("/api", rutasApi);
 
-app.get("/", (req, res) => {
-  const saludoServer = "Hola desde el servidor";
-  const arregloServer = [6, 7, 8, 9, 10, 11, 12, 13];
-  res.render("main", {
-    saludoServer: saludoServer,
-    arregloServer,
-    showList: true,
-  });
+app.get("/productos", (req, res) => {
+  res.render("index", { personas: products.listarTodos() });
+});
+
+app.post("/personas", (req, res) => {
+  products.save(req.body);
+  res.redirect("/personas");
 });
 
 const connectedServer = app.listen(PORT, () => {

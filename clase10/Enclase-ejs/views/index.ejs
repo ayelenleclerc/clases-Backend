@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi pagina EJS</title>
+</head>
+
+<body>
+    <h1>Hola desde EJS</h1>
+    <% if (showSaludo){ %>
+        <h3>
+            <%= saludoServer %>
+        </h3>
+        <% } %>
+
+            <ul>
+                <% arregloServer.forEach(item=> {%>
+                    <li>
+                        Item: <%= item %>
+                    </li>
+                    <% }); %>
+
+            </ul>
+            <%- include('./partials/imagen.ejs',
+                {url: "https://res.cloudinary.com/ayelenleclerc/image/upload/v1663769573/32435_1_mmxgbx.jpg" }) %>
+</body>
+
+</html>
