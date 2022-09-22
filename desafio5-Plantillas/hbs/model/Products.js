@@ -45,7 +45,7 @@ class Products {
   save(product) {
     const { title, price, thumbnail } = product;
     if (!title || !price || !thumbnail) {
-      return null;
+      return { error: "nombre,precio  e imagen son campos obligatorios" };
     }
     Products.lastProductId++;
     const newProduct = {

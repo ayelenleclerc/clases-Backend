@@ -20,9 +20,18 @@ app.engine(
 
 app.set("views", "./views");
 app.set("view engine", "hbs");
+// Middlewares
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.resolve(__dirname, "./public")));
 
-app.get("/", (req, res) => {
+app.get("/productos", (req, res) => {
   res.render("index", { mostrarProductos: true, products: products.getAll() });
+});
+app.post("/productos", (req, res) => {
+  let { title, price, thumbnail } = products.save(req.body);
+
+  res.redirect("/productos");
 });
 
 app.listen(PORT, () => {
