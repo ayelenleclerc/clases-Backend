@@ -20,6 +20,7 @@ app.engine(
 
 app.set("views", "./views");
 app.set("view engine", "hbs");
+
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

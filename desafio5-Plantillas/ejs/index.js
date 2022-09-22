@@ -20,12 +20,12 @@ app.use(express.static(path.resolve(__dirname, "./public")));
 app.use("/api", rutasApi);
 
 app.get("/productos", (req, res) => {
-  res.render("index", { personas: products.listarTodos() });
+  res.render("index", { productos: products.getAll() });
 });
 
-app.post("/personas", (req, res) => {
+app.post("/productos", (req, res) => {
   products.save(req.body);
-  res.redirect("/personas");
+  res.redirect("/productos");
 });
 
 const connectedServer = app.listen(PORT, () => {
