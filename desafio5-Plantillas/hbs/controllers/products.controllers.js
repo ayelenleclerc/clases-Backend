@@ -18,7 +18,7 @@ const getAllController = (req, res) => {
       respuestaProductos = respuestaProductos.filter(
         (product) =>
           product.nombre.toLowerCase().startsWith(busqueda.toLowerCase()) ||
-          product.apellido.toLowerCase().startsWith(busqueda.toLowerCase())
+          product.price.toLowerCase().startsWith(busqueda.toLowerCase())
       );
     }
   }

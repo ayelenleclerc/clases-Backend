@@ -1,11 +1,10 @@
 const path = require("path");
-const rutasApi = require("");
 const express = require("express");
-const { Products } = require("./models");
-const { urlencoded } = require("express");
+const Products = require("./model/Products");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+
 const products = new Products();
 
 app.set("views", "./views");
@@ -13,18 +12,17 @@ app.set("view engine", "ejs");
 
 // Middlewares
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.resolve(__dirname, "./public")));
 
 // Rutas
-app.use("/api", rutasApi);
 
 app.get("/productos", (req, res) => {
   res.render("index", { productos: products.getAll() });
 });
 
 app.post("/productos", (req, res) => {
-  products.save(req.body);
+  let { title, price, thumbnail } = products.save(req.body);
   res.redirect("/productos");
 });
 
