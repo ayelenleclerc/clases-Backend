@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Tutorial Socket</title>
+</head>
+
+<body>
+    <h1>Tutorial Socket.io</h1>
+
+    <!-- Desafio 1 y 2
+        <input type="text" name="message" id="chat-input">
+    <div id="chat-box">
+        <span id="chat-box-message"></span>
+    </div> -->
+
+    <!-- desafio 3 -->
+    <h2 class="title">Desafio 3 - Chat-App</h2>
+    <div class="chat-container" id="chat-container">
+        <input class="input-chat" type="text" name="message" id="chat-input" placeholder="texto a enviar">
+        <button class="btn-chat">Enviar</button>
+    </div>
+    <div class="chat-box-container" id="chat-box-container"></div>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./client.js"></script>
+</body>
+
+</html>
