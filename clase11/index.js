@@ -31,8 +31,6 @@ const messages = [];
 const users = [];
 const colors = ["orange", "yellow", "green", "pink", "purple"];
 let colorIndex = 0;
-
-// Sockets Events
 io.on("connection", (socket) => {
   if (colorIndex > colors.length - 1) {
     colorIndex = 0;
