@@ -28,11 +28,12 @@ const products = [
     id: 4,
   },
 ];
-
+const msg = [];
 class Products {
   static lastProductId = products[products.length - 1].id;
   constructor() {
     this.list = products;
+    this.data = msg;
   }
 
   getAll() {
@@ -80,6 +81,15 @@ class Products {
     );
     if (productIndex < 0) return null;
     return this.list.splice(productIndex, 1);
+  }
+  saveMessage(email, text, time) {
+    const user = {
+      email,
+      text,
+      time,
+    };
+    this.data.push(user);
+    return this.data;
   }
 }
 

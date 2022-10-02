@@ -31,7 +31,7 @@ app.post("/login", (req, res) => {
 });
 
 //Listen
-const connectedServer = httpServer.listen(PORT, () => {
+httpServer.listen(PORT, () => {
   console.log(`Server is up and running on port ${PORT}`);
 });
 
@@ -57,6 +57,33 @@ io.on("connection", (socket) => {
       "chat-message",
       formatMessage(null, botName, `Welcome to Shut App!`)
     );
-    // Bot greetings
+    // Broadcast connection
+    socket.broadcast.emit(
+      "chat-message",
+      formatMessage(null, botName, `${data.username} has joined the chat`)
+    );
+    // socket.emit("username", data.username);
   });
+
+  //New message
+  socket.on("new-message", (data) => {
+    const author = users.find((user) => user.id === socket.id);
+    const newMessage = formatMessage(socket.id, author.username, data);
+    messages.push(newMessage);
+    io.emit("chat-message", newMessage);
+  });
+
+  // socket.on("disconnect", (socket) => {
+  //   console.log("Client disconnected!");
+  //   if (socket.id) {
+  //     users.filter((user) => user.id !== socket.id)
+  //   }
+
+  //     return res.redirect("/login");
+
+  // });
+  // socket.broadcast.emit(
+  //   "chat-message",
+  //   formatMessage(null, botName, `${data.username} has disconnected!`)
+  // );
 });

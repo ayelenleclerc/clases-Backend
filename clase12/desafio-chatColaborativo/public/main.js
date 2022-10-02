@@ -31,6 +31,24 @@ const renderMessages = (data) => {
   document.getElementById("messages").innerHTML = html;
 };
 
+// const renderUsers = (data) => {
+//   const html = data
+//     .forEach((data) => {
+//       `<div class="row px-1">
+//                 <span class="text-light">
+//                   <div class="d-inline-block mx-2 users-icon"></div>
+//                   ${data[i].username}
+//                 </span>
+//               </div>`;
+//     })
+//     .join("\n");
+//   document.getElementById("users-list").innerHTML = html;
+// };
+
+const chatForm = document.getElementById("chat-form");
+const textInput = document.getElementById("text-input");
+const leaveChat = document.getElementById("leave-chat");
+
 const socket = io();
 
 //join chat
@@ -40,6 +58,32 @@ const { username } = Qs.parse(window.location.search, {
 
 socket.emit("join-chat", { username });
 
-socket.on("chat-message", (data) => {
-  renderMessage(username, data);
+// socket.on("username", (data) => {
+//   renderUsers(data);
+// });
+
+//Form events listeners
+chatForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const msg = textInput.value;
+  socket.emit("new-message", msg);
+  textInput.value = "";
 });
+
+socket.on("chat-message", (data) => {
+  renderMessage(socket.id, data);
+});
+
+// listenning "messages" events
+
+socket.on("messages", (data) => {
+  renderMessages(data);
+});
+
+// leaveChat.addEventListener("click", (e) => {
+//   e.preventDefault();
+
+//   socket.emit("disconnect", { username });
+
+//   socket.on("disconnect", socketId);
+// });
