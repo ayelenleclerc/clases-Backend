@@ -1,0 +1,9 @@
+// es en formato JSON
+
+{
+  //configuraciones iniciales para utilizar babel
+  "presets": ["@babel/preset-env"], //aca va referenciada el preset que instalamos
+  "plugins": [] // se instalan los plugins con npm i -D (plugin) y los referenciamos aca en formato de "texto"
+}
+
+//En el stript de babel en el package.json, se le puede colocar el flag -d -->es para indicarle donde va a ir el archivo transpilado por convencion es en el directorio dist,
