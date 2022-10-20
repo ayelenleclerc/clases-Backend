@@ -9,5 +9,10 @@ module.exports = {
       database: "demo16",
     },
   },
-  sqlite: {},
+  sqlite: {
+    client: "sqlite3",
+    connection: {
+      filename: "../db/sqlite/clase16.sqlite",
+    },
+  },
 };
