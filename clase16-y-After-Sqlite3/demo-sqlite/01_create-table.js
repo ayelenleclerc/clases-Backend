@@ -26,6 +26,7 @@ const newUser = {
         table.integer("age");
         table.string("dni").notNullable().unique();
       });
+      console.log("Table created successfully");
     }
   } catch (error) {
     console.log(error);
