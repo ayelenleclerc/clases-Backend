@@ -1,1 +1,103 @@
 Instalacion de MongoDB
+Base de datos  No Relacional, NoSQL, orientada a documentos que ofrece una gran escabilidad y flexibilidad, y un modelo de consultas e indexacion avanzado.
+Lo primero que se define es el modelo de datos.
+Descargar Community Server
+1- next
+2- accept - next
+3- complete
+4- desmarcar Install MongoD as a Service - next
+5- desmarcar install MongoDB compass - next
+6- Install
+7- finish
+
+Luego instalar mongo shell 
+
+Configuracion del PATH
+entrar a Variables de entorno, 
+seleccionar Variables del sistema
+ path, editar - nuevo
+agregar la carpeta bin C:\Program Files\MongoDB\Server\6.0\bin
+Aceptar, 
+Aceptar, 
+Aceptar, 
+___________________________________________________________
+crear la carpeta data en el directorio de mongoDB al mismo nivel de la carpeta bin (en el caso que se necesite y no venga, tambien podemos crear una carpeta log)
+___________________________________________________________
+ INICIAR MONGO DB
+cmd: como administrador!
+mongod --dbpath "C:\Program Files\MongoDB\Server\6.0\data"
+
+otra cmd: como administrador!
+mongosh
+___________________________________________________________________
+MongoDB almacena los datos en una estructura de Colecciones (collections).(tabla en sql)
+y documentos (documents).(registros en sql)
+La estructura de estos documentos, son objetos. (como los objetos de JS)
+se pueden almacenar tipos de datos complejos, como objetos y arreglos.
+
+el campo unico  se represta con _id:1   <- siempre debe tener el _id
+{
+    _id:1,
+    titulo: "Titulo 1",
+    etiquetas: ["Etiquetas 1",
+    "Etiquetas 2"]
+    autor:{
+        nombre: "Autor",
+        apellido: "Apellido"
+    }
+
+}
+___________________________________________________________________
+COMANDOS
+cls <- limpia la terminal
+
+show database o show dbs <= muestra las bases de datos 
+show collection <= muestra las colecciones existentes
+use <nombreDeLaBD>  <= para usar la base de datos // indicando el nombre de la db, la inicia o crea. si no existe
+db.<nombreCollection> <= para usar o crear una Coleccion-
+db.<nombreCollection>.metodo <- metodo que queremos usar
+
+METODOS
+insertOne() <= para insertar un documento (o registro)
+insertMany() <= para insertar muchos documentos
+find() <= para consultar
+drop() <= para elimiar documentos, colecciones, bases de datos
+
+insertOne() <= para insertar un documento
+Ej: db.usuarios.insertOne({"name": "Nombre", "Apellido":"Apellido"})
+** devuelve un objeto 
+{ 
+    acknowledged: true,
+    inserdedId: ObjectId("635a8957100276a48ec69213")} donde 635a8957100276a48ec69213 es el hash que crea automaticamente, este es el id del documento
+    que acabamos de insertar a la coleccion. Mongo genera este ObjectId de manera automática.
+
+Si no insertamos una collection, ni un documento en una base de datos, la misma no se mostrará al ejecutar el comando show dbs.
+
+insertMany() <= para insertar muchos documentos... le pasamos un arreglo con los documentos a insertar
+Ej: db.usuarios.insertMany([{"name": "Ayelen", "Apellido":"Leclerc"},
+{"name": "Maria", "Apellido":"Etulain"},{"name": "Leticia", "Apellido":"Galiñanes"},{"name": "Kiara", "Apellido":"Bescos"}])
+ ** devuelve
+ {
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("635a8dc6100276a48ec69214"),
+    '1': ObjectId("635a8dc6100276a48ec69215"),
+    '2': ObjectId("635a8dc6100276a48ec69216"),
+    '3': ObjectId("635a8dc6100276a48ec69217")
+  }
+}
+db.usuarios.insertMany([{name: "Christian", Apellido: "Bescos", alias: "Father"}, {name: "Yusef", Apellido: "Candia", alias: "Yuyu"}]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("635a8f11100276a48ec69218"),
+    '1': ObjectId("635a8f11100276a48ec69219")
+  }
+}
+
+ db.usuarios.drop();
+** devuelve
+true
+
+CONSULTAS
+db.usuarios.find();

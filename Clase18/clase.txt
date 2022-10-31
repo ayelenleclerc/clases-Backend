@@ -1,0 +1,51 @@
+CONFIGURACION  para mongod.cfg para windows (a mi no me funcina) sera que se usa cuando la carpeta data esta en otro directorio ?
+storage:
+  dbPath: "C:\Program Files\MongoDB\Server\6.0\data"
+  journal:
+    enabled: true
+#  engine:
+#  wiredTiger:
+
+# where to write logging data.
+systemLog:
+  destination: file
+  logAppend: true
+  path:  "C:\Program Files\MongoDB\Server\6.0\log\mongod.log"
+
+
+#security:
+  # authorization: enabled
+
+___________________________________________________________________________
+para conectare el servidor CMD como administrador.
+>mongod -f "C:\Program Files\MongoDB\Server\6.0\bin\mongod.cfg" (pero a mi no me funcina)
+
+usar:
+mongod --dbpath "C:\Program Files\MongoDB\Server\6.0\data"
+
+OTRA CMD como administrador
+mongosh
+
+___________________________________________________________________________________
+
+date: ISODate();
+
+
+herramientas: Mongo Development tools
+
+
+___________________________________________________________________________________
+CRUD
+
+Create 
+db.coll.insertOne({})
+
+db.coll.insertMany([
+    {documento1},
+    {documento2},
+    ])
+
+Read
+db.coll.findOne({}) devuelve el primer documento
+db.coll.find({}) devuelve un cursor, documentos paginados. (accediendo con it para mostrar los seguientes 10), no es la data en si.
+db.coll.find({}).toArray() <= devuelve un array con los primeron 100 items y ya podemos trabajar con todos los datos. consume muchos recursos.no podemos hacer nada mas que ver la data.
