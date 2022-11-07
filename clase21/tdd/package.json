@@ -1,0 +1,20 @@
+{
+  "name": "tdd",
+  "version": "1.0.0",
+  "description": "Quiere un servidor que cuando le realice una peticion GET me responda con un status 200 y el texto \"Hello Everyone\";",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.2.2",
+    "supertest": "^6.3.1"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
