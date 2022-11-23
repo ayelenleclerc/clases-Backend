@@ -2,7 +2,7 @@
 const fs = require("fs/promises");
 const express = require("express");
 const session = require("express-session");
-const FileStore = require("session-file-store")(session);
+const MongoStore = require("connect-mongo");
 
 const auth = require("./middlewares/auth");
 
@@ -21,16 +21,9 @@ app.use(
     secret: "top-secret-51",
     resave: false,
     saveUninitialized: false,
-    store: new FileStore({
-      path: "./session",
-      ttl: 300, // una vez pasado ese tiempo la session se invalida para refrescarla, y darle dinamismo a la session se hace con la maxAge de la cookie
-      retries: 0,
+    store: MongoStore.create({
+      mongoUrl: "mongodb://localhost/sessions",
     }),
-    cookie: {
-      secure: true,
-      httpOnly: true,
-      maxAge: 3600,
-    },
   })
 );
 

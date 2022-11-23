@@ -23,7 +23,7 @@
       {
         "number": "12345678",
         "type": "Cuenta de Ahorros",
-        "balance": 14000,
+        "balance": 18000,
         "currency": "USD",
         "delinquent": false,
         "amount": null
@@ -36,7 +36,8 @@
         "delinquent": true,
         "amount": 15000
       }
-    ]
+    ],
+    "balance": 1000
   },
   {
     "name": "Jorge",
