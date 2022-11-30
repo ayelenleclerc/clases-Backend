@@ -1,7 +1,7 @@
 const path = require("path");
 const express = require("express");
-const apiRoutes = require("./api/api.routes");
-const auth = require("../middlewares/auth");
+const apiRoutes = require("./api.routes");
+const auth = require("../../middlewares/auth");
 
 const router = express.Router();
 
@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
   if (user) {
     return res.redirect("/profile");
   } else {
-    return res.sendFile(path.resolve(__dirname, "../public/login.html"));
+    return res.sendFile(path.resolve(__dirname, "../../public/login.html"));
   }
 });
 

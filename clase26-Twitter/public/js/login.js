@@ -35,3 +35,12 @@ coverSignUpBtn.addEventListener("click", () => {
   formWindow.classList.add("window-to-left-frame");
   formContent.classList.add("content-to-right-frame");
 });
+
+const twitterSignIn = document.getElementById("sign-in-twitter");
+twitterSignIn.addEventListener("click", () => {
+  location.href = "/api/auth/twitter";
+});
+const twitterSignUp = document.getElementById("sign-up-twitter");
+twitterSignUp.addEventListener("click", () => {
+  location.href = "/api/auth/twitter";
+});

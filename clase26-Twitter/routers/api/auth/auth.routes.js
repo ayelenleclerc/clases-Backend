@@ -27,4 +27,14 @@ router.post(
   )
 );
 
+router.get("/twitter", passport.authenticate("twitter"));
+
+router.get(
+  "/twitter/callback",
+  passport.authenticate("twitter", {
+    failureRedirect: "/twitter-error",
+    successRedirect: "/profile",
+  })
+);
+
 module.exports = router;
