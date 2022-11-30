@@ -1,3 +1,4 @@
+const { DB_PASSWORD } = require("../env.config");
 const env = require("../env.config");
 
 module.exports = {
